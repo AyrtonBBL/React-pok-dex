@@ -1,11 +1,11 @@
 interface PokemonCardProps {
-    name: "string",
-  imgSrc: "string",
+  pokemon: { 
+    name: string;
+  imgSrc?: string;
+};
 }
 
-
-function PokemonCard({ pokemon }) {
-
+function PokemonCard({ pokemon }: PokemonCardProps) {
     return (
         <figure> 
 { pokemon.imgSrc ? (
