@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import PokemonCard from "./components/PokemonCard";
+import NavBar from "./components/NavBar"; // <-- N'oublie pas d'importer ta NavBar !
 
 const pokemonList = [
   {
@@ -31,7 +32,6 @@ const pokemonList = [
 function App() {
   const [pokemonName, setPokemonName] = useState("bulbasaur");
 
-  // Cherche le Pokémon correspondant au state actuel
   const pokemon = pokemonList.find((p) => p.name === pokemonName);
 
   if (pokemon == null) {
@@ -40,16 +40,9 @@ function App() {
 
   return (
     <div>
-      <nav>
-        {pokemonList.map((p) => (
-          <button 
-            key={p.name} 
-            onClick={() => setPokemonName(p.name)}
-          >
-            {p.name}
-          </button>
-        ))}
-      </nav>
+      {/* On appelle NavBar en lui passant les props nécessaires */}
+      <NavBar setPokemonName={setPokemonName} pokemonList={pokemonList} />
+      
       <PokemonCard pokemon={pokemon} />
     </div>
   );
